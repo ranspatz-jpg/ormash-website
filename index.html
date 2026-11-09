@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אורמש | אנרגיה סולארית - המומחיות שלנו הרווח שלכם</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-dark: #0a1628;
+            --navy: #0f1f3a;
+            --navy-light: #1a2d4d;
+            --magenta: #FF0066;
+            --magenta-light: #ff3385;
+            --magenta-dark: #cc0052;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --text-light: rgba(255,255,255,0.8);
+            --text-dark: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--navy-dark);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           HEADER
+        ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 10px 60px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--magenta);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--magenta);
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--magenta);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .social-icons a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--magenta);
+            border-color: var(--magenta);
+            transform: translateY(-2px);
+        }
+
+        .contact-icons {
+            display: flex;
+            gap: 8px;
+            padding-right: 15px;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-icons a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--magenta);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-icons a:hover {
+            background: var(--magenta-light);
+            transform: translateY(-2px);
+        }
+
+        .phone-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--magenta);
+            border: none;
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            direction: ltr;
+        }
+
+        .phone-btn:hover {
+            background: var(--magenta-light);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: linear-gradient(180deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(255,0,102,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--magenta) 0%, var(--magenta-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label-top {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .stat-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--magenta);
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* ============================================
+           SERVICES SECTION
+        ============================================ */
+        .services-section {
+            padding: 100px 60px;
+            background: var(--navy);
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 2px solid var(--magenta);
+            border-radius: 20px;
+            padding: 60px;
+            background: rgba(255,0,102,0.03);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 25px;
+            color: var(--magenta);
+        }
+
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .service-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .service-description {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           HOW IT WORKS SECTION
+        ============================================ */
+        .how-section {
+            padding: 100px 60px;
+            background: var(--gray-light);
+            color: var(--text-dark);
+        }
+
+        .how-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .step-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--magenta);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step-bar {
+            width: 60px;
+            height: 4px;
+            background: var(--magenta);
+            margin: 0 auto 20px;
+            border-radius: 2px;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           CLIENTS SECTION
+        ============================================ */
+        .clients-section {
+            padding: 80px 60px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .clients-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 50px;
+        }
+
+        .clients-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.7;
+        }
+
+        .clients-logos img {
+            height: 60px;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        .clients-logos img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+        ============================================ */
+        .contact-section {
+            padding: 100px 60px;
+            background: linear-gradient(180deg, var(--navy-dark) 0%, var(--navy) 100%);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .contact-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 18px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: var(--white);
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--magenta);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .form-checkbox input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--magenta);
+        }
+
+        .form-submit {
+            background: var(--magenta);
+            color: var(--white);
+            border: none;
+            padding: 18px 60px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-submit:hover {
+            background: var(--magenta-light);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer {
+            padding: 60px 60px 30px;
+            background: var(--navy-dark);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-brand {
+            text-align: right;
+        }
+
+        .footer-brand .logo-text {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .footer-address {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .footer-phone {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            direction: ltr;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* ============================================
+           POPUP
+        ============================================ */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            border: 2px solid var(--magenta);
+        }
+
+        .popup-overlay.active .popup {
+            transform: scale(1);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 2px solid var(--magenta);
+            border-radius: 50%;
+            color: var(--magenta);
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .popup-close:hover {
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        .popup-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .popup-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .popup-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .popup-option:hover {
+            background: rgba(255,0,102,0.1);
+            border-color: var(--magenta);
+        }
+
+        .popup-option-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--magenta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-option-text {
+            flex: 1;
+        }
+
+        .popup-option-title {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .popup-option-subtitle {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* ============================================
+           FLOATING CONTACT BUTTON
+        ============================================ */
+        .float-contact {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--magenta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 30px rgba(255,0,102,0.4);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 40px rgba(255,0,102,0.5);
+        }
+
+        /* ============================================
+           ACCESSIBILITY BUTTON
+        ============================================ */
+        .accessibility-btn {
+            position: fixed;
+            top: 100px;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background: #0073e6;
+            border-radius: 0 10px 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 998;
+            border: none;
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .steps-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                padding: 15px 30px;
+            }
+            .nav {
+                display: none;
+            }
+            .stats-row {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .stat-number {
+                font-size: 56px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            .hero-title {
+                font-size: 36px;
+            }
+            .services-section,
+            .how-section,
+            .contact-section {
+                padding: 60px 20px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-container {
+                padding: 30px;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="logo.png" alt="אורמש">
+        </a>
+
+        <nav class="nav">
+            <a href="#hero">ראשי</a>
+            <a href="#about">אודות</a>
+            <a href="#services">שירותי תחזוקה</a>
+            <a href="#projects">פרויקטים</a>
+            <a href="#blog">בלוג</a>
+            <a href="#contact">צור קשר</a>
+        </nav>
+
+        <div class="header-contact">
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/company/%D7%90%D7%95%D7%A8%D7%9E%D7%A9-%D7%90%D7%A0%D7%A8%D7%92%D7%99%D7%94-%D7%A1%D7%95%D7%9C%D7%90%D7%A8%D7%99%D7%AA-ormash-solar/" target="_blank" title="LinkedIn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/channel/UCK1DA3QgNHcWwZ9AA-PVBrA" target="_blank" title="YouTube">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/OrmashSolar" target="_blank" title="Facebook">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/ormashsolar/" target="_blank" title="Instagram">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+            <!-- Direct Contact Icons -->
+            <div class="contact-icons">
+                <a href="https://api.whatsapp.com/send?phone=972587377290" target="_blank" title="WhatsApp">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </a>
+                <a href="mailto:ormash.solar@gmail.com" title="אימייל">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+                </a>
+            </div>
+            <!-- Phone Button -->
+            <a href="tel:*8446" class="phone-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/></svg>
+                *8446
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">המומחיות שלנו</p>
+            <h1 class="hero-title"><span>הרווח שלכם</span></h1>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <p class="stat-label-top">הקמנו מעל</p>
+                <p class="stat-number" data-target="850">0</p>
+                <div class="stat-bar"></div>
+                <p class="stat-label">מערכות מסחריות</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-label-top">הופקו מעל</p>
+                <p class="stat-number" data-target="2">0</p>
+                <div class="stat-bar"></div>
+                <p class="stat-label">מליארד קוט״ש</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-label-top">נחסכו</p>
+                <p class="stat-number" data-target="1">0</p>
+                <div class="stat-bar"></div>
+                <p class="stat-label">מליארד קילוגרם פליטת CO2</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3 class="service-title">הנפקת אישורים</h3>
+                    <p class="service-description">אורמש מתכננת, מתקינה ומתחזקת מערכות סולאריות לייצור חשמל באנרגיה מתחדשת. בנוסף אורמש מלווה אתכם בתהליך הנפקת האישורים הנדרשים מול הרשויות.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3 class="service-title">תכנון הנדסי מקיף</h3>
+                    <p class="service-description">אורמש מעניקה שירותי תכנון הנדסי, קונסטרוקטיבי וחשמלי מקיף. צוות המהנדסים המנוסים שלנו ידאג שתיהנו ממערכת יעילה, אמינה ובטוחה.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <h3 class="service-title">ייזום הפרויקט</h3>
+                    <p class="service-description">אורמש מלווה אתכם לאורך כל תהליך הקמת המערכת הסולארית, החל משלב הייזום ועד ההפעלה. אנו מבצעים ניתוח טכנו-כלכלי מעמיק.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <h3 class="service-title">לוגיסטיקה, ניהול מלאי ורכש</h3>
+                    <p class="service-description">אורמש דואגת לכל הלוגיסטיקה, לניהול המלאי ורכש הציוד הנדרש. אנו עובדים בשיתוף עם ספקים מובילים בתחום.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </div>
+                    <h3 class="service-title">ניהול הפרויקט</h3>
+                    <p class="service-description">אורמש מעניקה שירותי ניהול ופיקוח מקצועיים לאורך כל תהליך הקמת המערכת הסולארית. צוות מנוסה ילווה אתכם בכל שלב.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3 class="service-title">הפעלת המערכת שירות ותחזוקה</h3>
+                    <p class="service-description">אורמש מספקת שירותי הפעלה, שירות ותחזוקה שוטפת לכל מערכת סולארית שאנו מקימים. צוות המומחים שלנו ידאג שהמערכת תפעל בצורה תקינה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-section" id="how">
+        <div class="how-container">
+            <h2 class="section-title">איך זה עובד?</h2>
+            <p class="section-description">
+                אנרגיה סולארית היא טכנולוגיה מתקדמת המאפשרת לרתום את אור השמש, מקור אנרגיה טבעי, נקי ובלתי נדלה, לייצור חשמל. טכנולוגיה זו הפכה בשנים האחרונות לנפוצה יותר ויותר, הן בבתים פרטיים והן במבנים ציבוריים ותעשייתיים.
+            </p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-bar"></div>
+                    <p class="step-text">הפאנלים הסולאריים קולטים את אור השמש והופכים אותו לאנרגיה חשמלית נקייה וללא פליטה של מזהמים</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-bar"></div>
+                    <p class="step-text">החשמל שמיוצר מועבר לממיר, שתפקידו להופכו מזרם ישיר (DC) לזרם חליפין (AC)</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-bar"></div>
+                    <p class="step-text">זרם החשמל מועבר לארון החשמל של המבנה</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-bar"></div>
+                    <p class="step-text">החשמל המיוצר נצרך קודם כל ע"י הצרכנים שמחוברים לאותו מבנה</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-bar"></div>
+                    <p class="step-text">עודפי החשמל זורמים לרשת ההולכה של חברת החשמל ומגיעים לצרכן הבא בתור</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients-section" id="clients">
+        <h2 class="clients-title">הלקוחות שלנו</h2>
+        <div class="clients-logos">
+            <!-- Client logos would go here -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <p class="contact-subtitle">הצטרפו לאלפי לקוחות מרוצים</p>
+            <h2 class="contact-title">צרו איתנו קשר</h2>
+
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="שם מלא" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-input" placeholder="טלפון" required>
+                </div>
+                <div class="form-group full-width">
+                    <input type="email" class="form-input" placeholder="כתובת אימייל">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="ישוב">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="מהו שטח הגג?">
+                </div>
+                <div class="form-group full-width">
+                    <label class="form-checkbox">
+                        <input type="checkbox" required>
+                        **אני מתחייב לכך שגודל הגג שלי הוא 800 מ"ר ומעלה
+                    </label>
+                </div>
+                <div class="form-group full-width">
+                    <button type="submit" class="form-submit">שליחה</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <p class="logo-text">אורמש<span> - </span>אנרגיה סולארית</p>
+            </div>
+            <div class="footer-address">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+                המתכת 6, קדימה צורן
+            </div>
+            <a href="tel:*8446" class="footer-phone">חייגו *8446</a>
+            <a href="#" class="logo">
+                <img src="https://ormash.com/wp-content/uploads/2024/03/new-logo-ormash.webp" alt="אורמש" style="height: 40px;">
+            </a>
+        </div>
+        <div class="footer-bottom">
+            © 2024 אורמש אנרגיה סולארית. כל הזכויות שמורות.
+        </div>
+    </footer>
+
+    <!-- Floating Contact Button -->
+    <div class="float-contact">
+        <button class="float-btn" id="openPopup">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/></svg>
+        </button>
+    </div>
+
+    <!-- Accessibility Button -->
+    <button class="accessibility-btn" title="נגישות">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
+    </button>
+
+    <!-- Contact Popup -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <button class="popup-close" id="closePopup">×</button>
+            <h3 class="popup-title">איך תרצו ליצור קשר?</h3>
+            <div class="popup-options">
+                <a href="tel:*8446" class="popup-option">
+                    <div class="popup-option-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/></svg>
+                    </div>
+                    <div class="popup-option-text">
+                        <p class="popup-option-title">התקשרו אלינו</p>
+                        <p class="popup-option-subtitle">*8446</p>
+                    </div>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=972587377290" target="_blank" class="popup-option">
+                    <div class="popup-option-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    </div>
+                    <div class="popup-option-text">
+                        <p class="popup-option-title">WhatsApp</p>
+                        <p class="popup-option-subtitle">שלחו הודעה</p>
+                    </div>
+                </a>
+                <a href="mailto:ormash.solar@gmail.com" class="popup-option">
+                    <div class="popup-option-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+                    </div>
+                    <div class="popup-option-text">
+                        <p class="popup-option-title">אימייל</p>
+                        <p class="popup-option-subtitle">ormash.solar@gmail.com</p>
+                    </div>
+                </a>
+                <a href="#contact" class="popup-option" id="scrollToForm">
+                    <div class="popup-option-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H1.5C.65 21 0 20.35 0 19.5v-15c0-.85.65-1.5 1.5-1.5h21c.85 0 1.5.65 1.5 1.5zm-2 3.15L12 13.5 2 7.65V19h20V7.65zM12 11.25L21.85 5H2.15L12 11.25z"/></svg>
+                    </div>
+                    <div class="popup-option-text">
+                        <p class="popup-option-title">טופס יצירת קשר</p>
+                        <p class="popup-option-subtitle">מלאו פרטים ונחזור אליכם</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Popup functionality
+        const openPopupBtn = document.getElementById('openPopup');
+        const closePopupBtn = document.getElementById('closePopup');
+        const popupOverlay = document.getElementById('popupOverlay');
+        const scrollToForm = document.getElementById('scrollToForm');
+
+        openPopupBtn.addEventListener('click', () => {
+            popupOverlay.classList.add('active');
+        });
+
+        closePopupBtn.addEventListener('click', () => {
+            popupOverlay.classList.remove('active');
+        });
+
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) {
+                popupOverlay.classList.remove('active');
+            }
+        });
+
+        scrollToForm.addEventListener('click', () => {
+            popupOverlay.classList.remove('active');
+        });
+
+        // Animated counters
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        let statsAnimated = false;
+
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.target);
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function updateNumber(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const currentValue = Math.floor(easeOut * target);
+                element.textContent = currentValue;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                } else {
+                    element.textContent = target;
+                }
+            }
+
+            requestAnimationFrame(updateNumber);
+        }
+
+        function checkStatsVisible() {
+            if (statsAnimated) return;
+
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+
+            const rect = hero.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+            if (isVisible) {
+                statsAnimated = true;
+                statNumbers.forEach((stat, index) => {
+                    setTimeout(() => {
+                        animateCounter(stat);
+                    }, index * 300);
+                });
+            }
+        }
+
+        window.addEventListener('scroll', checkStatsVisible);
+        window.addEventListener('load', checkStatsVisible);
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
