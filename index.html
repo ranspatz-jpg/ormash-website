@@ -500,9 +500,7 @@
         }
 
         .projects-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             margin-bottom: 50px;
         }
 
@@ -510,10 +508,12 @@
             font-size: 48px;
             font-weight: 800;
             color: var(--text-dark);
+            margin-bottom: 30px;
         }
 
         .carousel-controls {
             display: flex;
+            justify-content: center;
             gap: 15px;
         }
 
@@ -1404,134 +1404,52 @@
                 <div class="carousel-track" id="carouselTrack">
                     <div class="project-card">
                         <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-                            </div>
+                            <img src="project1.jpg" alt="קיבוץ נאות מרדכי">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">קיבוץ</span>
+                            <h3 class="project-name">קיבוץ נאות מרדכי</h3>
+                            <p class="project-details">מערכת סולארית על גגות הקיבוץ</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project2.png" alt="עפולה">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">עירוני</span>
+                            <h3 class="project-name">עפולה</h3>
+                            <p class="project-details">פרויקט סולארי עירוני</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project3.png" alt="תמה תעשיות - קיבוץ משמר העמק">
                         </div>
                         <div class="project-content">
                             <span class="project-category">מבנה תעשייתי</span>
-                            <h3 class="project-name">מפעל שטראוס - שדרות</h3>
-                            <p class="project-details">התקנת מערכת סולארית על גג המפעל</p>
-                            <div class="project-stats">
-                                <div class="project-stat">
-                                    <p class="project-stat-value">1.5 MW</p>
-                                    <p class="project-stat-label">הספק</p>
-                                </div>
-                                <div class="project-stat">
-                                    <p class="project-stat-value">12,000</p>
-                                    <p class="project-stat-label">מ״ר</p>
-                                </div>
-                            </div>
+                            <h3 class="project-name">תמה תעשיות - קיבוץ משמר העמק</h3>
+                            <p class="project-details">מערכת סולארית על גג המפעל</p>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">מסחרי</span>
-                            <h3 class="project-name">מרכז לוגיסטי - נתב״ג</h3>
-                            <p class="project-details">מערכת סולארית משולבת עם מערכת אגירה</p>
-                            <div class="project-stats">
-                                <div class="project-stat">
-                                    <p class="project-stat-value">2.2 MW</p>
-                                    <p class="project-stat-label">הספק</p>
-                                </div>
-                                <div class="project-stat">
-                                    <p class="project-stat-value">18,000</p>
-                                    <p class="project-stat-label">מ״ר</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">חקלאי</span>
-                            <h3 class="project-name">משק חקלאי - עמק יזרעאל</h3>
-                            <p class="project-details">מערכת סולארית על גגות רפתות ולולים</p>
-                            <div class="project-stats">
-                                <div class="project-stat">
-                                    <p class="project-stat-value">800 kW</p>
-                                    <p class="project-stat-label">הספק</p>
-                                </div>
-                                <div class="project-stat">
-                                    <p class="project-stat-value">6,500</p>
-                                    <p class="project-stat-label">מ״ר</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">ציבורי</span>
-                            <h3 class="project-name">בית ספר תיכון - רמת גן</h3>
-                            <p class="project-details">מערכת סולארית חינוכית-הדגמתית</p>
-                            <div class="project-stats">
-                                <div class="project-stat">
-                                    <p class="project-stat-value">350 kW</p>
-                                    <p class="project-stat-label">הספק</p>
-                                </div>
-                                <div class="project-stat">
-                                    <p class="project-stat-value">2,800</p>
-                                    <p class="project-stat-label">מ״ר</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-                            </div>
+                            <img src="project4.jpg" alt="לוריאל - מגדל העמק">
                         </div>
                         <div class="project-content">
                             <span class="project-category">מבנה תעשייתי</span>
-                            <h3 class="project-name">מחסני ענק - באר שבע</h3>
-                            <p class="project-details">מתחם לוגיסטי עם מערכת סולארית מתקדמת</p>
-                            <div class="project-stats">
-                                <div class="project-stat">
-                                    <p class="project-stat-value">3.5 MW</p>
-                                    <p class="project-stat-label">הספק</p>
-                                </div>
-                                <div class="project-stat">
-                                    <p class="project-stat-value">28,000</p>
-                                    <p class="project-stat-label">מ״ר</p>
-                                </div>
-                            </div>
+                            <h3 class="project-name">לוריאל - מגדל העמק</h3>
+                            <p class="project-details">מערכת סולארית על גג המפעל</p>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-                            </div>
+                            <img src="project5.jpg" alt="מושב משען">
                         </div>
                         <div class="project-content">
-                            <span class="project-category">מסחרי</span>
-                            <h3 class="project-name">קניון - חיפה</h3>
-                            <p class="project-details">מערכת סולארית על גג חניון הקניון</p>
-                            <div class="project-stats">
-                                <div class="project-stat">
-                                    <p class="project-stat-value">1.8 MW</p>
-                                    <p class="project-stat-label">הספק</p>
-                                </div>
-                                <div class="project-stat">
-                                    <p class="project-stat-value">15,000</p>
-                                    <p class="project-stat-label">מ״ר</p>
-                                </div>
-                            </div>
+                            <span class="project-category">מושב</span>
+                            <h3 class="project-name">מושב משען</h3>
+                            <p class="project-details">מערכת סולארית על גגות המושב</p>
                         </div>
                     </div>
                 </div>
