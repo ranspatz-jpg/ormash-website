@@ -539,42 +539,43 @@
             color: var(--white);
         }
 
-        /* 1. Carousel Outer Wrapper: Clips the overflow */
-        .carousel-wrapper {
-            overflow: hidden;
+        /* Outer container: locks viewport and isolates coordinate space */
+        .projects-carousel-wrapper {
             width: 100%;
+            overflow: hidden;
             position: relative;
-            direction: ltr; /* Lock slider track to LTR to avoid RTL transform math headaches */
+            direction: ltr !important; /* Critical: anchors the translation axis predictably */
+            padding: 20px 0;
         }
 
-        /* 2. Track: Must be flex, max-content width, and animated */
-        .carousel-track {
+        /* Inner moving track */
+        .projects-track {
             display: flex !important;
             width: max-content !important;
-            gap: 24px;
-            animation: infinite-scroll 25s linear infinite;
+            gap: 24px; /* Ensure uniform gap */
+            animation: scroll-opposite 30s linear infinite;
             will-change: transform;
         }
 
-        /* Pause when the user hovers over any card */
-        .carousel-track:hover {
+        /* Pause smoothly when hovering over any card */
+        .projects-track:hover {
             animation-play-state: paused;
         }
 
-        /* 3. Keyframes: Moves exactly half the width (the first set of 7 cards) */
-        @keyframes infinite-scroll {
-            from {
-                transform: translateX(0);
+        /* Reversed direction: moves left-to-right seamlessly */
+        @keyframes scroll-opposite {
+            0% {
+                transform: translate3d(-50%, 0, 0);
             }
-            to {
-                transform: translateX(-50%);
+            100% {
+                transform: translate3d(0%, 0, 0);
             }
         }
 
-        /* 4. Ensure each project card keeps a fixed size and doesn't shrink */
+        /* Individual card styling */
         .project-card {
-            flex: 0 0 320px; /* Fixed card width */
-            direction: rtl;  /* Restores RTL text rendering inside the card */
+            flex: 0 0 320px; /* Lock fixed card width */
+            direction: rtl;  /* Ensure card contents remain in Hebrew RTL */
             background: var(--gray-light);
             border-radius: 20px;
             overflow: hidden;
@@ -1379,8 +1380,8 @@
             <div class="projects-header">
                 <h2 class="projects-title">פרויקטים נבחרים</h2>
             </div>
-            <div class="carousel-wrapper">
-                <div class="carousel-track" id="carouselTrack">
+            <div class="projects-carousel-wrapper">
+                <div class="projects-track">
                     <!-- Original 7 cards -->
                     <div class="project-card">
                         <div class="project-image">
