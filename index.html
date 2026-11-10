@@ -545,20 +545,10 @@
         .carousel-track {
             display: flex;
             gap: 30px;
-            animation: scroll 15s linear infinite;
         }
 
         .carousel-track:hover {
             animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-50% - 15px));
-            }
         }
 
         .project-card {
@@ -1639,15 +1629,40 @@
             });
         });
 
-        // Projects Carousel - Infinite Loop with CSS Animation
+        // Projects Carousel - Infinite Loop
         const carouselTrack = document.getElementById('carouselTrack');
         const cards = document.querySelectorAll('.project-card');
+        const gap = 30; // gap in pixels
 
         // Clone all cards and append for seamless infinite loop
         cards.forEach(card => {
             const clone = card.cloneNode(true);
             carouselTrack.appendChild(clone);
         });
+
+        // Calculate scroll distance (width of original cards + gaps)
+        function setupCarouselAnimation() {
+            const firstCard = carouselTrack.querySelector('.project-card');
+            const cardWidth = firstCard.offsetWidth;
+            const totalOriginalCards = cards.length;
+            const scrollDistance = (cardWidth + gap) * totalOriginalCards;
+
+            // Create and inject keyframes dynamically
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = `
+                @keyframes carouselScroll {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-${scrollDistance}px); }
+                }
+            `;
+            document.head.appendChild(styleSheet);
+
+            // Apply animation
+            carouselTrack.style.animation = 'carouselScroll 12s linear infinite';
+        }
+
+        // Run after DOM is ready and images loaded
+        window.addEventListener('load', setupCarouselAnimation);
 
         // Scroll Animations with Intersection Observer
         const observerOptions = {
