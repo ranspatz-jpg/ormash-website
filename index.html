@@ -567,10 +567,10 @@
         /* Seamless Keyframes: Group 2 perfectly replaces Group 1 */
         @keyframes scroll-opposite {
             0% {
-                transform: translate3d(-50%, 0, 0);
+                transform: translate3d(0, 0, 0);
             }
             100% {
-                transform: translate3d(0%, 0, 0);
+                transform: translate3d(-50%, 0, 0);
             }
         }
 
@@ -746,10 +746,6 @@
             animation: client-scroll 22s linear infinite;
         }
 
-        .clients-track:hover {
-            animation-play-state: paused;
-        }
-
         .client-logo-item {
             width: 140px;
             height: 60px;
@@ -762,15 +758,6 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .client-logo-item img:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.08);
         }
 
         @keyframes client-scroll {
