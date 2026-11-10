@@ -1627,42 +1627,64 @@
             });
         });
 
-        // Projects Carousel
+        // Projects Carousel - Infinite Loop
         const carouselTrack = document.getElementById('carouselTrack');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        const cards = document.querySelectorAll('.project-card');
+        const totalCards = cards.length;
+
+        // Clone cards for infinite loop
+        cards.forEach(card => {
+            const clone = card.cloneNode(true);
+            carouselTrack.appendChild(clone);
+        });
+
         let carouselPosition = 0;
         const cardWidth = 100 / 3; // 33.33% for 3 visible cards
-        const totalCards = document.querySelectorAll('.project-card').length;
-        const maxPosition = totalCards - 3; // Show 3 cards at a time
 
-        function updateCarousel() {
+        function updateCarousel(smooth = true) {
+            carouselTrack.style.transition = smooth ? 'transform 0.5s ease' : 'none';
             carouselTrack.style.transform = `translateX(${carouselPosition * cardWidth}%)`;
         }
 
-        prevBtn.addEventListener('click', () => {
-            if (carouselPosition < 0) {
-                carouselPosition++;
-                updateCarousel();
+        // Reset position seamlessly when reaching clones
+        function checkReset() {
+            if (carouselPosition <= -totalCards) {
+                setTimeout(() => {
+                    carouselPosition = 0;
+                    updateCarousel(false);
+                }, 500);
+            } else if (carouselPosition > 0) {
+                setTimeout(() => {
+                    carouselPosition = -totalCards + 1;
+                    updateCarousel(false);
+                }, 500);
             }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            carouselPosition++;
+            updateCarousel();
+            checkReset();
         });
 
         nextBtn.addEventListener('click', () => {
-            if (Math.abs(carouselPosition) < maxPosition) {
-                carouselPosition--;
-                updateCarousel();
-            }
+            carouselPosition--;
+            updateCarousel();
+            checkReset();
         });
 
-        // Auto-scroll carousel
-        let autoScrollInterval = setInterval(() => {
-            if (Math.abs(carouselPosition) < maxPosition) {
-                carouselPosition--;
-            } else {
-                carouselPosition = 0;
-            }
-            updateCarousel();
-        }, 5000);
+        // Auto-scroll carousel (opposite direction, faster)
+        function startAutoScroll() {
+            return setInterval(() => {
+                carouselPosition++;
+                updateCarousel();
+                checkReset();
+            }, 2500);
+        }
+
+        let autoScrollInterval = startAutoScroll();
 
         // Pause auto-scroll on hover
         const carouselWrapper = document.querySelector('.carousel-wrapper');
@@ -1670,14 +1692,7 @@
             clearInterval(autoScrollInterval);
         });
         carouselWrapper.addEventListener('mouseleave', () => {
-            autoScrollInterval = setInterval(() => {
-                if (Math.abs(carouselPosition) < maxPosition) {
-                    carouselPosition--;
-                } else {
-                    carouselPosition = 0;
-                }
-                updateCarousel();
-            }, 5000);
+            autoScrollInterval = startAutoScroll();
         });
 
         // Scroll Animations with Intersection Observer
