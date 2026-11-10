@@ -544,18 +544,18 @@
 
         .carousel-track {
             display: flex;
-            gap: 30px;
-            width: fit-content;
-            animation: scrollCarousel 20s linear infinite;
+            width: max-content;
+            gap: 24px;
+            animation: marquee 25s linear infinite;
         }
 
         .carousel-track:hover {
             animation-play-state: paused;
         }
 
-        @keyframes scrollCarousel {
+        @keyframes marquee {
             0% {
-                transform: translateX(0);
+                transform: translateX(0%);
             }
             100% {
                 transform: translateX(-50%);
@@ -563,7 +563,7 @@
         }
 
         .project-card {
-            width: 350px;
+            width: 320px;
             flex-shrink: 0;
             background: var(--gray-light);
             border-radius: 20px;
