@@ -537,34 +537,42 @@
             color: var(--white);
         }
 
+        /* 1. Carousel Outer Wrapper: Clips the overflow */
         .carousel-wrapper {
             overflow: hidden;
+            width: 100%;
             position: relative;
+            direction: ltr; /* Lock slider track to LTR to avoid RTL transform math headaches */
         }
 
+        /* 2. Track: Must be flex, max-content width, and animated */
         .carousel-track {
-            display: flex;
-            width: max-content;
+            display: flex !important;
+            width: max-content !important;
             gap: 24px;
-            animation: marquee 25s linear infinite;
+            animation: infinite-scroll 25s linear infinite;
+            will-change: transform;
         }
 
+        /* Pause when the user hovers over any card */
         .carousel-track:hover {
             animation-play-state: paused;
         }
 
-        @keyframes marquee {
-            0% {
-                transform: translateX(0%);
+        /* 3. Keyframes: Moves exactly half the width (the first set of 7 cards) */
+        @keyframes infinite-scroll {
+            from {
+                transform: translateX(0);
             }
-            100% {
+            to {
                 transform: translateX(-50%);
             }
         }
 
+        /* 4. Ensure each project card keeps a fixed size and doesn't shrink */
         .project-card {
-            width: 320px;
-            flex-shrink: 0;
+            flex: 0 0 320px; /* Fixed card width */
+            direction: rtl;  /* Restores RTL text rendering inside the card */
             background: var(--gray-light);
             border-radius: 20px;
             overflow: hidden;
