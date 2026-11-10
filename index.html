@@ -539,30 +539,34 @@
             color: var(--white);
         }
 
-        /* Outer container: locks viewport and isolates coordinate space */
+        /* Container */
         .projects-carousel-wrapper {
             width: 100%;
             overflow: hidden;
+            direction: ltr !important; /* Locks translation coordinates */
             position: relative;
-            direction: ltr !important; /* Critical: anchors the translation axis predictably */
-            padding: 20px 0;
         }
 
-        /* Inner moving track */
+        /* Moving Track: NO gap here */
         .projects-track {
             display: flex !important;
             width: max-content !important;
-            gap: 24px; /* Ensure uniform gap */
             animation: scroll-opposite 30s linear infinite;
             will-change: transform;
         }
 
-        /* Pause smoothly when hovering over any card */
         .projects-track:hover {
             animation-play-state: paused;
         }
 
-        /* Reversed direction: moves left-to-right seamlessly */
+        /* The Group: Holds the gap internally and adds matching padding at the end */
+        .projects-group {
+            display: flex;
+            gap: 24px;
+            padding-right: 24px; /* Essential: creates the exact 24px gap between Group 1 and Group 2 */
+        }
+
+        /* Seamless Keyframes: Group 2 perfectly replaces Group 1 */
         @keyframes scroll-opposite {
             0% {
                 transform: translate3d(-50%, 0, 0);
@@ -572,10 +576,10 @@
             }
         }
 
-        /* Individual card styling */
+        /* Card */
         .project-card {
-            flex: 0 0 320px; /* Lock fixed card width */
-            direction: rtl;  /* Ensure card contents remain in Hebrew RTL */
+            flex: 0 0 320px;
+            direction: rtl; /* Keeps content in Hebrew */
             background: var(--gray-light);
             border-radius: 20px;
             overflow: hidden;
@@ -1382,8 +1386,9 @@
             </div>
             <div class="projects-carousel-wrapper">
                 <div class="projects-track">
-                    <!-- Original 7 cards -->
-                    <div class="project-card">
+                    <!-- Group 1: Original 7 cards -->
+                    <div class="projects-group">
+                        <div class="project-card">
                         <div class="project-image">
                             <img src="project1.jpg" alt="קיבוץ נאות מרדכי">
                         </div>
@@ -1453,8 +1458,11 @@
                             <p class="project-details">מערכת סולארית על גגות המושב</p>
                         </div>
                     </div>
-                    <!-- Duplicated 7 cards for seamless loop -->
-                    <div class="project-card">
+                    </div>
+
+                    <!-- Group 2: Duplicate of the 7 cards (hidden from screen readers) -->
+                    <div class="projects-group" aria-hidden="true">
+                        <div class="project-card">
                         <div class="project-image">
                             <img src="project1.jpg" alt="קיבוץ נאות מרדכי">
                         </div>
@@ -1523,6 +1531,7 @@
                             <h3 class="project-name">מושב משען</h3>
                             <p class="project-details">מערכת סולארית על גגות המושב</p>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
