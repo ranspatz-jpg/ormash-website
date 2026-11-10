@@ -295,44 +295,70 @@
         }
 
         /* Stats */
-        .stats-row {
+        /* ============================================
+           STATS RIBBON
+        ============================================ */
+        .stats-ribbon {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+            padding: 32px 20px;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 60px;
+            justify-content: space-around;
+            align-items: center;
+            direction: rtl;
         }
 
         .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            flex: 1;
         }
 
-        .stat-label-top {
-            font-size: 14px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 10px;
-            font-weight: 500;
+        .stat-number-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1;
+        }
+
+        .stat-prefix, .stat-unit {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
         }
 
         .stat-number {
-            font-size: 72px;
-            font-weight: 900;
-            color: var(--white);
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0f172a;
             line-height: 1;
-            margin-bottom: 10px;
-        }
-
-        .stat-bar {
-            width: 100%;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-            margin-bottom: 15px;
         }
 
         .stat-label {
-            font-size: 16px;
-            color: rgba(255,255,255,0.8);
-            font-weight: 400;
+            margin-top: 8px;
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 48px;
+            background-color: #e2e8f0;
         }
 
         /* ============================================
@@ -592,27 +618,20 @@
         /* Card */
         .project-card {
             flex: 0 0 320px;
-            direction: rtl; /* Keeps content in Hebrew */
-            background: var(--gray-light);
-            border-radius: 20px;
+            direction: rtl;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+            height: 380px;
         }
 
         .project-image {
-            height: 220px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .project-image img {
@@ -621,52 +640,54 @@
             object-fit: cover;
         }
 
-        .project-image-placeholder {
-            color: var(--white);
-            font-size: 60px;
-            opacity: 0.5;
-        }
-
         .project-content {
-            padding: 25px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+            color: var(--white);
         }
 
         .project-category {
             display: inline-block;
             background: var(--accent);
             color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .project-name {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 10px;
+            color: var(--white);
+            margin-bottom: 6px;
         }
 
         .project-details {
-            font-size: 14px;
-            color: var(--text-light);
-            line-height: 1.6;
+            font-size: 13px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
         }
 
         .project-info-link {
             display: inline-block;
-            margin-top: 12px;
-            font-size: 14px;
+            margin-top: 10px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--accent);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
         .project-info-link:hover {
-            color: var(--primary);
+            opacity: 0.8;
         }
 
         .project-stats {
@@ -1144,12 +1165,16 @@
             .nav {
                 display: none;
             }
-            .stats-row {
+            .stats-container {
                 flex-direction: column;
-                gap: 40px;
+                gap: 24px;
+            }
+            .stat-divider {
+                width: 60px;
+                height: 1px;
             }
             .stat-number {
-                font-size: 56px;
+                font-size: 2.2rem;
             }
         }
 
@@ -1277,25 +1302,37 @@
             <p class="hero-subtitle">המומחיות שלנו</p>
             <h1 class="hero-title"><span>הרווח שלכם</span></h1>
         </div>
+    </section>
 
-        <div class="stats-row">
+    <!-- Stats Ribbon -->
+    <section class="stats-ribbon">
+        <div class="stats-container">
             <div class="stat-item">
-                <p class="stat-label-top">הקמנו מעל</p>
-                <p class="stat-number" data-target="1700" data-suffix="">0</p>
-                <div class="stat-bar"></div>
-                <p class="stat-label">מערכות מסחריות</p>
+                <div class="stat-number-wrapper">
+                    <span class="stat-prefix">+</span>
+                    <span class="stat-number" data-target="1700">0</span>
+                </div>
+                <p class="stat-label">מערכות מסחריות מותקנות</p>
             </div>
+
+            <div class="stat-divider"></div>
+
             <div class="stat-item">
-                <p class="stat-label-top">הפקנו</p>
-                <p class="stat-number" data-target="2.2" data-decimal="true">0</p>
-                <div class="stat-bar"></div>
-                <p class="stat-label">מיליארד קוט״ש</p>
+                <div class="stat-number-wrapper">
+                    <span class="stat-number" data-target="2.2" data-decimal="true">0</span>
+                    <span class="stat-unit">מיליארד</span>
+                </div>
+                <p class="stat-label">קוט״ש של אנרגיה ירוקה</p>
             </div>
+
+            <div class="stat-divider"></div>
+
             <div class="stat-item">
-                <p class="stat-label-top">חסכנו</p>
-                <p class="stat-number" data-target="1.5" data-decimal="true">0</p>
-                <div class="stat-bar"></div>
-                <p class="stat-label">מיליארד ק״ג פליטות CO2</p>
+                <div class="stat-number-wrapper">
+                    <span class="stat-number" data-target="1.5" data-decimal="true">0</span>
+                    <span class="stat-unit">מיליארד ק״ג</span>
+                </div>
+                <p class="stat-label">צמצום פליטות CO₂</p>
             </div>
         </div>
     </section>
@@ -1896,15 +1933,10 @@
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const heroContent = document.querySelector('.hero-content');
-            const statsRow = document.querySelector('.stats-row');
 
             if (heroContent && scrolled < window.innerHeight) {
                 heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
                 heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
-            }
-
-            if (statsRow && scrolled < window.innerHeight) {
-                statsRow.style.transform = `translateY(${scrolled * 0.2}px)`;
             }
         });
     </script>
