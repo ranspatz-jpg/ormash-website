@@ -7,8 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <style>
         :root {
             --primary: #1a1a2e;
@@ -713,7 +711,7 @@
         }
 
         /* ============================================
-           CLIENTS SECTION - 3D Coverflow Carousel
+           CLIENTS SECTION - Minimalist Marquee
         ============================================ */
         .clients-section {
             padding: 80px 60px;
@@ -729,48 +727,59 @@
             margin-bottom: 30px;
         }
 
-        /* Swiper Container */
-        .clients-carousel {
+        .clients-marquee-wrapper {
             width: 100%;
-            padding-top: 40px !important;
-            padding-bottom: 50px !important;
-            overflow: visible;
-        }
-
-        /* Base slide dimensions */
-        .clients-carousel .swiper-slide {
-            width: 280px;
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
-            transform: scale(0.82);
-            opacity: 0.6;
-        }
-
-        /* Active center slide - gets bigger and prominent */
-        .clients-carousel .swiper-slide-active {
-            transform: scale(1.12);
-            opacity: 1;
-            z-index: 2;
-        }
-
-        /* Card inner aesthetics */
-        .clients-carousel .client-card {
-            background: var(--white);
-            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            padding: 20px;
+            direction: ltr !important;
+            position: relative;
+            padding: 30px 0;
+            /* Fade edges so logos don't clip harshly at screen borders */
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        .clients-track {
+            display: flex !important;
+            width: max-content !important;
+            gap: 48px;
+            align-items: center;
+            animation: client-scroll 22s linear infinite;
+        }
+
+        .clients-track:hover {
+            animation-play-state: paused;
+        }
+
+        .client-logo-item {
+            width: 140px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 180px;
         }
 
-        .clients-carousel .client-card img {
+        .client-logo-item img {
             max-width: 100%;
-            max-height: 140px;
+            max-height: 100%;
             object-fit: contain;
-            display: block;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .client-logo-item img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
+        @keyframes client-scroll {
+            from {
+                transform: translate3d(0, 0, 0);
+            }
+            to {
+                transform: translate3d(-50%, 0, 0);
+            }
         }
 
         /* ============================================
@@ -1542,44 +1551,25 @@
     <section class="clients-section fade-in-section" id="clients">
         <h2 class="clients-title">הלקוחות שלנו</h2>
 
-        <!-- Swiper 3D Coverflow Carousel -->
-        <div class="swiper clients-carousel">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="client-card">
-                        <img src="client1.jpg" alt="לקוח 1">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="client-card">
-                        <img src="client2.jpg" alt="לקוח 2">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="client-card">
-                        <img src="client3.jpg" alt="לקוח 3">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="client-card">
-                        <img src="client4.jpg" alt="לקוח 4">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="client-card">
-                        <img src="client5.jpg" alt="לקוח 5">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="client-card">
-                        <img src="client6.jpg" alt="לקוח 6">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="client-card">
-                        <img src="client7.jpg" alt="לקוח 7">
-                    </div>
-                </div>
+        <div class="clients-marquee-wrapper">
+            <div class="clients-track">
+                <!-- Original 7 Logos -->
+                <div class="client-logo-item"><img src="client1.jpg" alt="לקוח 1"></div>
+                <div class="client-logo-item"><img src="client2.jpg" alt="לקוח 2"></div>
+                <div class="client-logo-item"><img src="client3.jpg" alt="לקוח 3"></div>
+                <div class="client-logo-item"><img src="client4.jpg" alt="לקוח 4"></div>
+                <div class="client-logo-item"><img src="client5.jpg" alt="לקוח 5"></div>
+                <div class="client-logo-item"><img src="client6.jpg" alt="לקוח 6"></div>
+                <div class="client-logo-item"><img src="client7.jpg" alt="לקוח 7"></div>
+
+                <!-- Duplicate 7 Logos -->
+                <div class="client-logo-item" aria-hidden="true"><img src="client1.jpg" alt=""></div>
+                <div class="client-logo-item" aria-hidden="true"><img src="client2.jpg" alt=""></div>
+                <div class="client-logo-item" aria-hidden="true"><img src="client3.jpg" alt=""></div>
+                <div class="client-logo-item" aria-hidden="true"><img src="client4.jpg" alt=""></div>
+                <div class="client-logo-item" aria-hidden="true"><img src="client5.jpg" alt=""></div>
+                <div class="client-logo-item" aria-hidden="true"><img src="client6.jpg" alt=""></div>
+                <div class="client-logo-item" aria-hidden="true"><img src="client7.jpg" alt=""></div>
             </div>
         </div>
     </section>
@@ -1697,33 +1687,7 @@
         </div>
     </div>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script>
-        // Initialize Clients 3D Coverflow Carousel
-        const clientsSwiper = new Swiper('.clients-carousel', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            loop: true,
-            speed: 600,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-            coverflowEffect: {
-                rotate: 20,
-                stretch: 0,
-                depth: 150,
-                modifier: 1,
-                slideShadows: false,
-                scale: 0.85,
-            },
-        });
-
         // Header scroll effect
         const header = document.querySelector('.header');
         window.addEventListener('scroll', () => {
