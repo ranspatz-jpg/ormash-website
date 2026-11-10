@@ -235,7 +235,7 @@
             height: 100vh;
             min-width: 100vw;
             min-height: 56.25vw; /* 16:9 aspect ratio */
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) scale(1.2); /* Scale up to hide YouTube branding */
             pointer-events: none;
         }
 
@@ -1303,7 +1303,7 @@
         <!-- Video Background -->
         <div class="video-background">
             <iframe
-                src="https://www.youtube.com/embed/naOq_Mznqqc?autoplay=1&mute=1&loop=1&playlist=naOq_Mznqqc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+                src="https://www.youtube.com/embed/naOq_Mznqqc?autoplay=1&mute=1&loop=1&playlist=naOq_Mznqqc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1&iv_load_policy=3&fs=0&cc_load_policy=0&vq=hd1080"
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen>
