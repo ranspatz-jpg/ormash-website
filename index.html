@@ -1633,49 +1633,57 @@
         const nextBtn = document.getElementById('nextBtn');
         const cards = document.querySelectorAll('.project-card');
         const totalCards = cards.length;
+        const cardWidth = 100 / 3; // 33.33% for 3 visible cards
 
-        // Clone cards for infinite loop
-        cards.forEach(card => {
+        // Clone cards and prepend for infinite loop (moving right direction)
+        const cardsArray = Array.from(cards);
+        cardsArray.reverse().forEach(card => {
             const clone = card.cloneNode(true);
-            carouselTrack.appendChild(clone);
+            carouselTrack.insertBefore(clone, carouselTrack.firstChild);
         });
 
-        let carouselPosition = 0;
-        const cardWidth = 100 / 3; // 33.33% for 3 visible cards
+        // Start showing original cards (after the prepended clones)
+        let carouselPosition = -totalCards;
 
         function updateCarousel(smooth = true) {
             carouselTrack.style.transition = smooth ? 'transform 0.5s ease' : 'none';
             carouselTrack.style.transform = `translateX(${carouselPosition * cardWidth}%)`;
         }
 
+        // Initialize position without animation
+        updateCarousel(false);
+
         // Reset position seamlessly when reaching clones
         function checkReset() {
-            if (carouselPosition <= -totalCards) {
+            // When we've scrolled through all clones at the start, reset to original cards
+            if (carouselPosition >= 0) {
                 setTimeout(() => {
-                    carouselPosition = 0;
+                    carouselPosition = -totalCards;
                     updateCarousel(false);
                 }, 500);
-            } else if (carouselPosition > 0) {
+            }
+            // When we've scrolled past original cards going backward
+            if (carouselPosition < -totalCards - (totalCards - 3)) {
                 setTimeout(() => {
-                    carouselPosition = -totalCards + 1;
+                    carouselPosition = -(totalCards - 3);
                     updateCarousel(false);
                 }, 500);
             }
         }
 
         prevBtn.addEventListener('click', () => {
-            carouselPosition++;
-            updateCarousel();
-            checkReset();
-        });
-
-        nextBtn.addEventListener('click', () => {
             carouselPosition--;
             updateCarousel();
             checkReset();
         });
 
-        // Auto-scroll carousel (opposite direction, faster)
+        nextBtn.addEventListener('click', () => {
+            carouselPosition++;
+            updateCarousel();
+            checkReset();
+        });
+
+        // Auto-scroll carousel (moving right, faster at 2.5s)
         function startAutoScroll() {
             return setInterval(() => {
                 carouselPosition++;
