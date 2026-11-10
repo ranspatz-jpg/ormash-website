@@ -545,14 +545,25 @@
         .carousel-track {
             display: flex;
             gap: 30px;
+            width: fit-content;
+            animation: scrollCarousel 20s linear infinite;
         }
 
         .carousel-track:hover {
             animation-play-state: paused;
         }
 
+        @keyframes scrollCarousel {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
         .project-card {
-            min-width: calc(33.333% - 20px);
+            width: 350px;
             flex-shrink: 0;
             background: var(--gray-light);
             border-radius: 20px;
@@ -1332,17 +1343,10 @@
         <div class="projects-container">
             <div class="projects-header">
                 <h2 class="projects-title">פרויקטים נבחרים</h2>
-                <div class="carousel-controls">
-                    <button class="carousel-btn" id="prevBtn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                    </button>
-                    <button class="carousel-btn" id="nextBtn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                    </button>
-                </div>
             </div>
             <div class="carousel-wrapper">
                 <div class="carousel-track" id="carouselTrack">
+                    <!-- Original 7 cards -->
                     <div class="project-card">
                         <div class="project-image">
                             <img src="project1.jpg" alt="קיבוץ נאות מרדכי">
@@ -1386,6 +1390,97 @@
                     <div class="project-card">
                         <div class="project-image">
                             <img src="project5.jpg" alt="מושב משען">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">מושב</span>
+                            <h3 class="project-name">מושב משען</h3>
+                            <p class="project-details">מערכת סולארית על גגות המושב</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project6.jpg" alt="לוריאל - מגדל העמק">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">מבנה תעשייתי</span>
+                            <h3 class="project-name">לוריאל - מגדל העמק</h3>
+                            <p class="project-details">מערכת סולארית על גג המפעל</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project7.jpg" alt="מושב משען">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">מושב</span>
+                            <h3 class="project-name">מושב משען</h3>
+                            <p class="project-details">מערכת סולארית על גגות המושב</p>
+                        </div>
+                    </div>
+                    <!-- Duplicated 7 cards for seamless loop -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project1.jpg" alt="קיבוץ נאות מרדכי">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">קיבוץ</span>
+                            <h3 class="project-name">קיבוץ נאות מרדכי</h3>
+                            <p class="project-details">מערכת סולארית על גגות הקיבוץ</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project2.png" alt="עפולה">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">עירוני</span>
+                            <h3 class="project-name">עפולה</h3>
+                            <p class="project-details">פרויקט סולארי עירוני</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project3.png" alt="תמה תעשיות - קיבוץ משמר העמק">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">מבנה תעשייתי</span>
+                            <h3 class="project-name">תמה תעשיות - קיבוץ משמר העמק</h3>
+                            <p class="project-details">מערכת סולארית על גג המפעל</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project4.jpg" alt="לוריאל - מגדל העמק">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">מבנה תעשייתי</span>
+                            <h3 class="project-name">לוריאל - מגדל העמק</h3>
+                            <p class="project-details">מערכת סולארית על גג המפעל</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project5.jpg" alt="מושב משען">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">מושב</span>
+                            <h3 class="project-name">מושב משען</h3>
+                            <p class="project-details">מערכת סולארית על גגות המושב</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project6.jpg" alt="לוריאל - מגדל העמק">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">מבנה תעשייתי</span>
+                            <h3 class="project-name">לוריאל - מגדל העמק</h3>
+                            <p class="project-details">מערכת סולארית על גג המפעל</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="project7.jpg" alt="מושב משען">
                         </div>
                         <div class="project-content">
                             <span class="project-category">מושב</span>
@@ -1629,40 +1724,7 @@
             });
         });
 
-        // Projects Carousel - Infinite Loop
-        const carouselTrack = document.getElementById('carouselTrack');
-        const cards = document.querySelectorAll('.project-card');
-        const gap = 30; // gap in pixels
-
-        // Clone all cards and append for seamless infinite loop
-        cards.forEach(card => {
-            const clone = card.cloneNode(true);
-            carouselTrack.appendChild(clone);
-        });
-
-        // Calculate scroll distance (width of original cards + gaps)
-        function setupCarouselAnimation() {
-            const firstCard = carouselTrack.querySelector('.project-card');
-            const cardWidth = firstCard.offsetWidth;
-            const totalOriginalCards = cards.length;
-            const scrollDistance = (cardWidth + gap) * totalOriginalCards;
-
-            // Create and inject keyframes dynamically
-            const styleSheet = document.createElement('style');
-            styleSheet.textContent = `
-                @keyframes carouselScroll {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-${scrollDistance}px); }
-                }
-            `;
-            document.head.appendChild(styleSheet);
-
-            // Apply animation
-            carouselTrack.style.animation = 'carouselScroll 12s linear infinite';
-        }
-
-        // Run after DOM is ready and images loaded
-        window.addEventListener('load', setupCarouselAnimation);
+        // Carousel animation is handled by CSS - no JavaScript needed
 
         // Scroll Animations with Intersection Observer
         const observerOptions = {
