@@ -1201,8 +1201,14 @@
         }
 
         /* ============================================
-           SECTION COLOR RHYTHM
+           SECTION COLOR RHYTHM & RESET
         ============================================ */
+        /* Ensure all sections flow naturally - no sticky positioning */
+        section {
+            position: static !important;
+            top: auto !important;
+        }
+
         .services-section {
             background: #f8fafc;
         }
@@ -1228,7 +1234,7 @@
             background: #f1f5f9;
             border-radius: 32px 32px 0 0;
             margin-top: -24px;
-            position: relative;
+            position: relative !important;
             z-index: 2;
         }
 
