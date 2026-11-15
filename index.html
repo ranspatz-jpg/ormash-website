@@ -557,6 +557,125 @@
         }
 
         /* ============================================
+           INFO + VIDEO SECTION (Split Layout with Tabs)
+        ============================================ */
+        .info-video-section {
+            padding: 80px 20px;
+            background-color: #f8fafc;
+            direction: rtl;
+        }
+
+        .info-video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .info-content-col .info-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 24px;
+        }
+
+        /* Tab Buttons */
+        .info-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 12px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .tab-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .tab-btn.active {
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        /* Tab Panels */
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .tab-panel p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #334155;
+            margin-bottom: 12px;
+        }
+
+        .more-text p {
+            margin-top: 12px;
+        }
+
+        .read-more-toggle {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 4px 0;
+            font-family: inherit;
+            transition: color 0.2s ease;
+        }
+
+        .read-more-toggle:hover {
+            color: var(--accent-light);
+        }
+
+        /* Video Card */
+        .video-card-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
+            background: #0f172a;
+        }
+
+        .video-card-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ============================================
            PROJECTS CAROUSEL SECTION
         ============================================ */
         .projects-section {
@@ -1401,6 +1520,32 @@
                 width: 80px;
                 height: 80px;
             }
+            /* Info + Video Section Mobile */
+            .info-video-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .info-video-col {
+                order: -1; /* Video first on mobile */
+            }
+            .info-content-col .info-title {
+                font-size: 1.5rem;
+            }
+            .info-tabs {
+                flex-wrap: wrap;
+            }
+            .tab-btn {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Info Video Section Tablet */
+        @media (max-width: 900px) {
+            .info-video-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
         }
     </style>
 </head>
@@ -1607,6 +1752,72 @@
                 </div>
             </div>
             <a href="#" class="read-more-link">קראו עוד על היתרונות ואנרגיה מתחדשת ←</a>
+        </div>
+    </section>
+
+    <!-- Info + Video Section (Split Layout with Tabs) -->
+    <section class="info-video-section" id="why-solar">
+        <div class="info-video-container">
+
+            <!-- Content Column with Tabs (Right) -->
+            <div class="info-content-col">
+                <span class="section-tag">למה לעבור לסולארי?</span>
+                <h2 class="info-title">השקעה חכמה שמייצרת תשואה ירוקה</h2>
+
+                <!-- Tab Buttons -->
+                <div class="info-tabs">
+                    <button class="tab-btn active" onclick="switchInfoTab('advantages', this)">
+                        יתרונות האנרגיה הסולארית
+                    </button>
+                    <button class="tab-btn" onclick="switchInfoTab('renewable', this)">
+                        אנרגיה מתחדשת ורגולציה
+                    </button>
+                </div>
+
+                <!-- Tab 1: Advantages -->
+                <div id="tab-advantages" class="tab-panel active">
+                    <p>
+                        השמש היא משאב אינסופי שאינו מתכלה. התקנת מערכת סולארית על גג המבנה הופכת שטח פסיבי למקור הכנסה קבוע, מפחיתה משמעותית את הוצאות החשמל ושומרת על סביבה ירוקה ללא פליטת מזהמים.
+                    </p>
+                    <div class="more-text" id="more-advantages" hidden>
+                        <p>
+                            בניגוד לשיטות ייצור חשמל מזהמות, מערכת פוטו-וולטאית פועלת בשקט מוחלט, דורשת תחזוקה מינימלית ומעלה את ערך הנכס התעשייתי או המסחרי לאורך עשרות שנים. אנרגיה סולארית היא טכנולוגיה מתקדמת המאפשרת לרתום את אור השמש, מקור אנרגיה טבעי, נקי ובלתי נדלה, לייצור חשמל.
+                        </p>
+                    </div>
+                    <button class="read-more-toggle" onclick="toggleMoreText('more-advantages', this)">
+                        המשך קריאה +
+                    </button>
+                </div>
+
+                <!-- Tab 2: Renewable Energy -->
+                <div id="tab-renewable" class="tab-panel" hidden>
+                    <p>
+                        המודעות הגוברת לאיכות הסביבה מובילה להטבות רגולטוריות משמעותיות המקלות על הקמת מערכות סולאריות על גגות עסקיים, חקלאיים ופרטיים בישראל.
+                    </p>
+                    <div class="more-text" id="more-renewable" hidden>
+                        <p>
+                            שימוש באנרגיה מתחדשת תורם לעצמאות אנרגטית, עומד בתקנים סביבתיים מחמירים ומאפשר ניצול מיטבי של תשתיות קיימות לטובת רווח כלכלי וסביבתי כאחד. טכנולוגיה זו הפכה בשנים האחרונות לנפוצה יותר ויותר, הן בבתים פרטיים והן במבנים ציבוריים ותעשייתיים.
+                        </p>
+                    </div>
+                    <button class="read-more-toggle" onclick="toggleMoreText('more-renewable', this)">
+                        המשך קריאה +
+                    </button>
+                </div>
+            </div>
+
+            <!-- Video Column (Left) -->
+            <div class="info-video-col">
+                <div class="video-card-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/_syvRXrXQOE?rel=0&modestbranding=1"
+                        title="מגה אור - אורין מודיעין"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -1939,6 +2150,29 @@
     </div>
 
     <script>
+        // Tab Switching for Info Section
+        function switchInfoTab(tabName, btn) {
+            document.querySelectorAll('.info-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.tab-panel').forEach(p => {
+                p.hidden = true;
+                p.classList.remove('active');
+            });
+
+            const target = document.getElementById('tab-' + tabName);
+            target.hidden = false;
+            target.classList.add('active');
+        }
+
+        // Toggle More Text
+        function toggleMoreText(id, btn) {
+            const el = document.getElementById(id);
+            const isHidden = el.hidden;
+            el.hidden = !isHidden;
+            btn.textContent = isHidden ? 'הסתר טקסט -' : 'המשך קריאה +';
+        }
+
         // Header scroll effect
         const header = document.querySelector('.header');
         window.addEventListener('scroll', () => {
