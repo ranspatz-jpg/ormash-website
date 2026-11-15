@@ -19,6 +19,7 @@
             --gray-medium: #6c757d;
             --text-dark: #212529;
             --text-light: #495057;
+            --header-height: 80px;
         }
 
         * {
@@ -200,16 +201,29 @@
         }
 
         /* ============================================
+           ABOVE-THE-FOLD WRAPPER
+        ============================================ */
+        .above-the-fold-wrapper {
+            display: flex;
+            flex-direction: column;
+            /* 100dvh accounts for dynamic mobile browser chrome */
+            height: calc(100dvh - var(--header-height));
+            min-height: 560px; /* Protection for very short screens */
+            width: 100%;
+        }
+
+        /* ============================================
            HERO SECTION
         ============================================ */
         .hero {
-            min-height: 60vh; /* Shorter hero so stats ribbon is clearly visible on first load */
+            flex: 1; /* Grows to fill remaining space above stats ribbon */
+            min-height: 0; /* Critical for flexbox to allow shrinking */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 40px 20px;
             background: #000;
             position: relative;
             overflow: hidden;
@@ -307,18 +321,18 @@
             background-clip: text;
         }
 
-        /* Stats */
         /* ============================================
            STATS RIBBON
         ============================================ */
         .stats-ribbon {
+            flex-shrink: 0; /* Never shrink - keeps natural height at bottom */
             width: 100%;
             background: #ffffff;
             border-bottom: 1px solid #e2e8f0;
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
             position: relative;
             z-index: 10;
-            padding: 32px 20px;
+            padding: 20px 24px;
         }
 
         .stats-container {
@@ -1310,11 +1324,40 @@
         }
 
         @media (max-width: 768px) {
+            :root {
+                --header-height: 68px;
+            }
+            .above-the-fold-wrapper {
+                min-height: 520px;
+            }
             .hero {
-                padding: 100px 20px 60px;
+                padding: 30px 20px;
             }
             .hero-title {
                 font-size: 36px;
+            }
+            .stats-ribbon {
+                padding: 14px 16px;
+            }
+            /* Keep stats in horizontal row on mobile to save vertical space */
+            .stats-container {
+                flex-direction: row !important;
+                gap: 8px;
+            }
+            .stat-number-wrapper {
+                font-size: 1.5rem;
+            }
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            .stat-prefix, .stat-unit {
+                font-size: 0.9rem;
+            }
+            .stat-label {
+                font-size: 0.7rem;
+            }
+            .stat-divider {
+                height: 32px;
             }
             .services-section,
             .how-section,
@@ -1409,55 +1452,58 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <!-- Video Background -->
-        <div class="video-background">
-            <iframe
-                src="https://www.youtube.com/embed/naOq_Mznqqc?autoplay=1&mute=1&loop=1&playlist=naOq_Mznqqc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1&iv_load_policy=3&fs=0&cc_load_policy=0&vq=hd1080"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen>
-            </iframe>
-        </div>
-        <div class="hero-content">
-            <p class="hero-subtitle">המומחיות שלנו</p>
-            <h1 class="hero-title"><span>הרווח שלכם</span></h1>
-        </div>
-    </section>
-
-    <!-- Stats Ribbon -->
-    <section class="stats-ribbon">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number-wrapper">
-                    <span class="stat-prefix">+</span>
-                    <span class="stat-number" data-target="1700">0</span>
-                </div>
-                <p class="stat-label">מערכות מסחריות מותקנות</p>
+    <!-- Above-the-fold wrapper: Hero + Stats fill exactly 100vh minus header -->
+    <div class="above-the-fold-wrapper">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <!-- Video Background -->
+            <div class="video-background">
+                <iframe
+                    src="https://www.youtube.com/embed/naOq_Mznqqc?autoplay=1&mute=1&loop=1&playlist=naOq_Mznqqc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1&iv_load_policy=3&fs=0&cc_load_policy=0&vq=hd1080"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+                </iframe>
             </div>
-
-            <div class="stat-divider"></div>
-
-            <div class="stat-item">
-                <div class="stat-number-wrapper">
-                    <span class="stat-number" data-target="2.2" data-decimal="true">0</span>
-                    <span class="stat-unit">מיליארד</span>
-                </div>
-                <p class="stat-label">קוט״ש של אנרגיה ירוקה</p>
+            <div class="hero-content">
+                <p class="hero-subtitle">המומחיות שלנו</p>
+                <h1 class="hero-title"><span>הרווח שלכם</span></h1>
             </div>
+        </section>
 
-            <div class="stat-divider"></div>
-
-            <div class="stat-item">
-                <div class="stat-number-wrapper">
-                    <span class="stat-number" data-target="1.5" data-decimal="true">0</span>
-                    <span class="stat-unit">מיליארד ק״ג</span>
+        <!-- Stats Ribbon -->
+        <section class="stats-ribbon">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-prefix">+</span>
+                        <span class="stat-number" data-target="1700">0</span>
+                    </div>
+                    <p class="stat-label">מערכות מסחריות מותקנות</p>
                 </div>
-                <p class="stat-label">צמצום פליטות CO₂</p>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="2.2" data-decimal="true">0</span>
+                        <span class="stat-unit">מיליארד</span>
+                    </div>
+                    <p class="stat-label">קוט״ש של אנרגיה ירוקה</p>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="1.5" data-decimal="true">0</span>
+                        <span class="stat-unit">מיליארד ק״ג</span>
+                    </div>
+                    <p class="stat-label">צמצום פליטות CO₂</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Services Section -->
     <section class="services-section" id="services">
