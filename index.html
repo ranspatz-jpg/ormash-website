@@ -1194,10 +1194,11 @@
             transform: translateY(0);
         }
 
-        /* Hero and Stats should be visible immediately */
-        .hero, .stats-ribbon {
-            opacity: 1;
-            transform: none;
+        /* Hero and Stats should be visible immediately - override reveal animation */
+        .hero, .stats-ribbon,
+        .stats-ribbon.reveal-block {
+            opacity: 1 !important;
+            transform: none !important;
         }
 
         /* ============================================
