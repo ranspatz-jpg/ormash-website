@@ -232,11 +232,7 @@
 
         .video-background {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
+            inset: 0;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -250,33 +246,25 @@
             height: 100vh;
             min-width: 100vw;
             min-height: 56.25vw;
-            transform: translate(-50%, -50%) scale(1.35); /* Scale more to hide all YouTube UI */
+            transform: translate(-50%, -50%) scale(1.35);
             pointer-events: none;
         }
 
-        /* Cover YouTube controls with pseudo-elements */
-        .video-background::before {
-            content: '';
+        /* Full overlay to block all YouTube controls and interactions */
+        .video-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%);
-            z-index: 2;
-            pointer-events: none;
+            inset: 0;
+            z-index: 1;
+            pointer-events: all;
+            cursor: default;
         }
 
-        .video-background::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
-            z-index: 2;
-            pointer-events: none;
+        /* Hide any browser video controls */
+        video::-webkit-media-controls {
+            display: none !important;
+        }
+        video::-webkit-media-controls-enclosure {
+            display: none !important;
         }
 
         .hero::before {
@@ -1659,6 +1647,8 @@
                     allow="autoplay; encrypted-media"
                     allowfullscreen>
                 </iframe>
+                <!-- Transparent overlay to block all YouTube controls -->
+                <div class="video-overlay"></div>
             </div>
             <div class="hero-content">
                 <p class="hero-subtitle">המומחיות שלנו</p>
