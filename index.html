@@ -393,53 +393,91 @@
            SERVICES SECTION
         ============================================ */
         .services-section {
-            padding: 100px 60px;
-            background: var(--white);
+            padding: 80px 20px;
+            background-color: #f8fafc;
+            direction: rtl;
         }
 
-        .services-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            border: 2px solid var(--gray);
-            border-radius: 20px;
-            padding: 60px;
-            background: var(--gray-light);
+        .services-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 50px auto;
+        }
+
+        .services-header h2 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .services-header p {
+            color: #64748b;
+            font-size: 1.05rem;
         }
 
         .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
+            gap: 24px;
         }
 
         .service-card {
-            text-align: center;
-            padding: 30px;
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px 28px;
+            text-align: right;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 25px;
-            color: var(--accent);
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.08);
+            border-color: rgba(239, 68, 68, 0.35);
         }
 
-        .service-icon svg {
-            width: 100%;
-            height: 100%;
+        .step-num {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #cbd5e1;
+        }
+
+        .icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(239, 68, 68, 0.08);
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-box svg {
+            width: 26px;
+            height: 26px;
         }
 
         .service-title {
-            font-size: 22px;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text-dark);
+            color: #0f172a;
+            margin-bottom: 8px;
         }
 
         .service-description {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #64748b;
+            margin: 0;
         }
 
         /* ============================================
@@ -1408,6 +1446,10 @@
         @media (max-width: 1200px) {
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .services-header h2 {
+                font-size: 1.8rem;
             }
             .steps-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -1486,9 +1528,16 @@
             }
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
-            .services-container {
-                padding: 30px;
+            .services-header {
+                margin-bottom: 32px;
+            }
+            .services-header h2 {
+                font-size: 1.5rem;
+            }
+            .service-card {
+                padding: 24px 20px;
             }
             .steps-grid {
                 grid-template-columns: 1fr;
@@ -1653,50 +1702,64 @@
 
     <!-- Services Section -->
     <section class="services-section" id="services">
-        <div class="services-container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <h3 class="service-title">הנפקת אישורים</h3>
-                    <p class="service-description">אורמש מתכננת, מתקינה ומתחזקת מערכות סולאריות לייצור חשמל באנרגיה מתחדשת. בנוסף אורמש מלווה אתכם בתהליך הנפקת האישורים הנדרשים מול הרשויות.</p>
+        <div class="services-header">
+            <h2>כל השירותים תחת קורת גג אחת</h2>
+            <p>מעטפת הנדסית מלאה משלב הרעיון ועד לחיבור לרשת החשמל</p>
+        </div>
+        <div class="services-grid">
+            <!-- 01 - ייזום ובדיקת היתכנות -->
+            <div class="service-card">
+                <span class="step-num">01</span>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    </div>
-                    <h3 class="service-title">תכנון הנדסי מקיף</h3>
-                    <p class="service-description">אורמש מעניקה שירותי תכנון הנדסי, קונסטרוקטיבי וחשמלי מקיף. צוות המהנדסים המנוסים שלנו ידאג שתיהנו ממערכת יעילה, אמינה ובטוחה.</p>
+                <h3 class="service-title">ייזום ובדיקת היתכנות</h3>
+                <p class="service-description">ניתוח טכנו-כלכלי מעמיק ובדיקת היתכנות לתשואה מקסימלית. אנו מלווים אתכם מהרעיון הראשוני ועד להחלטה המושכלת.</p>
+            </div>
+            <!-- 02 - תכנון הנדסי מקיף -->
+            <div class="service-card">
+                <span class="step-num">02</span>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    </div>
-                    <h3 class="service-title">ייזום הפרויקט</h3>
-                    <p class="service-description">אורמש מלווה אתכם לאורך כל תהליך הקמת המערכת הסולארית, החל משלב הייזום ועד ההפעלה. אנו מבצעים ניתוח טכנו-כלכלי מעמיק.</p>
+                <h3 class="service-title">תכנון הנדסי מקיף</h3>
+                <p class="service-description">שירותי תכנון הנדסי, קונסטרוקטיבי וחשמלי מקיף. צוות המהנדסים המנוסים שלנו ידאג למערכת יעילה, אמינה ובטוחה.</p>
+            </div>
+            <!-- 03 - רישוי והנפקת אישורים -->
+            <div class="service-card">
+                <span class="step-num">03</span>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                    </div>
-                    <h3 class="service-title">לוגיסטיקה, ניהול מלאי ורכש</h3>
-                    <p class="service-description">אורמש דואגת לכל הלוגיסטיקה, לניהול המלאי ורכש הציוד הנדרש. אנו עובדים בשיתוף עם ספקים מובילים בתחום.</p>
+                <h3 class="service-title">רישוי והנפקת אישורים</h3>
+                <p class="service-description">ליווי מלא בתהליך הנפקת האישורים הנדרשים מול כל הרשויות הרלוונטיות, כולל רשות החשמל והרשות המקומית.</p>
+            </div>
+            <!-- 04 - רכש ולוגיסטיקה -->
+            <div class="service-card">
+                <span class="step-num">04</span>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                    </div>
-                    <h3 class="service-title">ניהול הפרויקט</h3>
-                    <p class="service-description">אורמש מעניקה שירותי ניהול ופיקוח מקצועיים לאורך כל תהליך הקמת המערכת הסולארית. צוות מנוסה ילווה אתכם בכל שלב.</p>
+                <h3 class="service-title">רכש ולוגיסטיקה</h3>
+                <p class="service-description">ניהול מלאי ורכש ציוד מספקים מובילים בתחום. אנו דואגים לכל הלוגיסטיקה עבורכם.</p>
+            </div>
+            <!-- 05 - הקמה וניהול פרויקט -->
+            <div class="service-card">
+                <span class="step-num">05</span>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                    </div>
-                    <h3 class="service-title">הפעלת המערכת שירות ותחזוקה</h3>
-                    <p class="service-description">אורמש מספקת שירותי הפעלה, שירות ותחזוקה שוטפת לכל מערכת סולארית שאנו מקימים. צוות המומחים שלנו ידאג שהמערכת תפעל בצורה תקינה.</p>
+                <h3 class="service-title">הקמה וניהול פרויקט</h3>
+                <p class="service-description">שירותי ניהול ופיקוח מקצועיים לאורך כל תהליך הקמת המערכת. צוות מנוסה ילווה אתכם בכל שלב.</p>
+            </div>
+            <!-- 06 - שירות ותחזוקה -->
+            <div class="service-card">
+                <span class="step-num">06</span>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
+                <h3 class="service-title">שירות ותחזוקה</h3>
+                <p class="service-description">שירותי הפעלה ותחזוקה שוטפת לכל מערכת סולארית. צוות המומחים שלנו ידאג שהמערכת תפעל בצורה מיטבית.</p>
             </div>
         </div>
     </section>
