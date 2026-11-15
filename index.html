@@ -206,7 +206,8 @@
         .above-the-fold-wrapper {
             display: flex;
             flex-direction: column;
-            /* 100dvh accounts for dynamic mobile browser chrome */
+            /* Push below fixed header, then fill remaining viewport */
+            margin-top: var(--header-height);
             height: calc(100dvh - var(--header-height));
             min-height: 560px; /* Protection for very short screens */
             width: 100%;
