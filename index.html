@@ -1180,48 +1180,80 @@
         }
 
         /* ============================================
-           STACKING SCROLL EFFECT
+           SCROLL REVEAL ANIMATIONS
         ============================================ */
-        .stacking-container {
-            display: flex;
-            flex-direction: column;
+        .reveal-block {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-block.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero and Stats should be visible immediately */
+        .hero, .stats-ribbon {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ============================================
+           SECTION COLOR RHYTHM
+        ============================================ */
+        .services-section {
+            background: #f8fafc;
+        }
+
+        .how-section {
+            background: #ffffff;
+        }
+
+        .projects-section {
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        .projects-section .projects-title {
+            color: #ffffff;
+        }
+
+        .clients-section {
+            background: #ffffff;
+        }
+
+        .contact-section {
+            background: #f1f5f9;
+            border-radius: 32px 32px 0 0;
+            margin-top: -24px;
             position: relative;
+            z-index: 2;
         }
 
-        .stack-block {
-            position: sticky;
-            top: calc(80px + (var(--index) * 20px));
-            background: var(--white);
-            border-radius: 28px;
-            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            z-index: calc(10 + var(--index));
+        .contact-section .contact-subtitle,
+        .contact-section .contact-title {
+            color: var(--text-dark);
         }
 
-        .stack-block.services-section {
-            --index: 0;
-            background: var(--gray-light);
+        .contact-section .form-input {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: var(--text-dark);
         }
 
-        .stack-block.how-section {
-            --index: 1;
-            background: var(--white);
+        .contact-section .form-input::placeholder {
+            color: rgba(0,0,0,0.5);
         }
 
-        .stack-block.projects-section {
-            --index: 2;
-            background: var(--gray-light);
+        .contact-section .form-input:focus {
+            border-color: var(--accent);
+            background: rgba(0,0,0,0.08);
         }
 
-        .stack-block.clients-section {
-            --index: 3;
-            background: var(--white);
-        }
-
-        .stack-block.contact-section {
-            --index: 4;
-            background: var(--primary);
-            border-radius: 28px 28px 0 0;
+        .contact-section .form-checkbox {
+            color: var(--text-light);
         }
 
         /* ============================================
@@ -1415,11 +1447,8 @@
         </div>
     </section>
 
-    <!-- Stacking Scroll Container -->
-    <div class="stacking-container">
-
     <!-- Services Section -->
-    <section class="services-section stack-block" id="services">
+    <section class="services-section" id="services">
         <div class="services-container">
             <div class="services-grid">
                 <div class="service-card">
@@ -1469,7 +1498,7 @@
     </section>
 
     <!-- How It Works Section -->
-    <section class="how-section stack-block" id="how">
+    <section class="how-section" id="how">
         <div class="how-container">
             <h2 class="section-title">איך זה עובד?</h2>
             <p class="section-description">
@@ -1523,7 +1552,7 @@
     </section>
 
     <!-- Projects Carousel Section -->
-    <section class="projects-section stack-block fade-in-section" id="projects">
+    <section class="projects-section" id="projects">
         <div class="projects-container">
             <div class="projects-header">
                 <h2 class="projects-title">פרויקטים נבחרים</h2>
@@ -1711,7 +1740,7 @@
     </section>
 
     <!-- Clients Section -->
-    <section class="clients-section stack-block fade-in-section" id="clients">
+    <section class="clients-section" id="clients">
         <h2 class="clients-title">הלקוחות שלנו</h2>
 
         <div class="clients-marquee-wrapper">
@@ -1738,7 +1767,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section stack-block" id="contact">
+    <section class="contact-section" id="contact">
         <div class="contact-container">
             <p class="contact-subtitle">הצטרפו לאלפי לקוחות מרוצים</p>
             <h2 class="contact-title">צרו איתנו קשר</h2>
@@ -1771,8 +1800,6 @@
             </form>
         </div>
     </section>
-
-    </div><!-- End Stacking Container -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -1923,27 +1950,27 @@
             requestAnimationFrame(updateNumber);
         }
 
-        function checkStatsVisible() {
+        // Start stats animation immediately on page load
+        function startStatsAnimation() {
             if (statsAnimated) return;
+            statsAnimated = true;
 
-            const hero = document.querySelector('.hero');
-            if (!hero) return;
-
-            const rect = hero.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-            if (isVisible) {
-                statsAnimated = true;
+            // Small delay to ensure page is rendered
+            setTimeout(() => {
                 statNumbers.forEach((stat, index) => {
                     setTimeout(() => {
                         animateCounter(stat);
                     }, index * 400);
                 });
-            }
+            }, 300);
         }
 
-        window.addEventListener('scroll', checkStatsVisible);
-        window.addEventListener('load', checkStatsVisible);
+        // Run immediately when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startStatsAnimation);
+        } else {
+            startStatsAnimation();
+        }
 
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1964,24 +1991,20 @@
 
         // Carousel animation is handled by CSS - no JavaScript needed
 
-        // Scroll Animations with Intersection Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const fadeInObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        // Scroll Reveal Animation for Sections
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target); // Run only once
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.12 });
 
-        // Observe fade-in sections
-        document.querySelectorAll('.fade-in-section, .slide-in-right, .slide-in-left, .scale-in').forEach(el => {
-            fadeInObserver.observe(el);
+        // Apply reveal animation to all main sections (except hero and stats)
+        document.querySelectorAll('section:not(.hero):not(.stats-ribbon)').forEach((sec) => {
+            sec.classList.add('reveal-block');
+            revealObserver.observe(sec);
         });
 
         // Step Cards Animation
