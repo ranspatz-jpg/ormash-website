@@ -1887,6 +1887,116 @@
                 bottom: 14px !important;
                 left: 14px !important;
             }
+
+            /* =========================================================
+               10. תיקון קרוסלת "פרויקטים נבחרים" (מונע דריסה ומאיץ תנועה)
+            ========================================================= */
+            body > section:nth-of-type(4) > div > div:last-child {
+                overflow: hidden !important;
+                direction: ltr !important;
+                width: 100% !important;
+            }
+
+            /* הרצועה הראשית שזזה */
+            body > section:nth-of-type(4) > div > div:last-child > div {
+                display: flex !important;
+                flex-direction: row !important;
+                width: max-content !important;
+                gap: 16px !important;
+                animation-duration: 18s !important;
+                animation-delay: 0s !important;
+            }
+
+            /* שתי הקבוצות המשוכפלות (המקורית + ה-aria-hidden) */
+            body > section:nth-of-type(4) > div > div:last-child > div > div {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-shrink: 0 !important;
+                gap: 16px !important;
+                width: max-content !important;
+            }
+
+            /* כל כרטיסיית פרויקט בודדת */
+            body > section:nth-of-type(4) > div > div:last-child > div > div > div {
+                flex: 0 0 260px !important;
+                width: 260px !important;
+                min-width: 260px !important;
+                max-width: 260px !important;
+                direction: rtl !important;
+                margin: 0 !important;
+                position: relative !important;
+            }
+
+            /* =========================================================
+               11. שדרוג "איך זה עובד?" במובייל -> החלקה אופקית (Swipe)
+            ========================================================= */
+            body > section:nth-of-type(2) > div > div {
+                display: flex !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 14px !important;
+                padding: 8px 4px 20px 4px !important;
+                -webkit-overflow-scrolling: touch !important;
+                scrollbar-width: none !important;
+            }
+
+            body > section:nth-of-type(2) > div > div::-webkit-scrollbar {
+                display: none !important;
+            }
+
+            /* עיצוב כל כרטיס שלב ככרטיסייה מודרנית קומפקטית */
+            body > section:nth-of-type(2) > div > div > div {
+                flex: 0 0 78% !important;
+                width: 78% !important;
+                scroll-snap-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                background: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: 18px !important;
+                padding: 16px !important;
+                box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.08) !important;
+            }
+
+            /* תמונת השלב בתוך הכרטיס - פרופורציונלית ולא ענקית */
+            body > section:nth-of-type(2) > div > div > div > div:first-child {
+                width: 100% !important;
+                height: 150px !important;
+                border-radius: 12px !important;
+                overflow: hidden !important;
+                margin-bottom: 12px !important;
+            }
+
+            body > section:nth-of-type(2) > div > div > div img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+
+            /* עיגול המספר */
+            body > section:nth-of-type(2) > div > div > div > div:nth-child(2) {
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 0.9rem !important;
+                margin: -28px auto 10px auto !important;
+                position: relative !important;
+                z-index: 2 !important;
+                border: 3px solid #ffffff !important;
+            }
+
+            /* הסתרת הקו המפריד הישן */
+            body > section:nth-of-type(2) > div > div > div > div:nth-child(3) {
+                display: none !important;
+            }
+
+            body > section:nth-of-type(2) > div > div > div p {
+                font-size: 0.92rem !important;
+                line-height: 1.5 !important;
+                color: #334155 !important;
+            }
         }
     </style>
 </head>
