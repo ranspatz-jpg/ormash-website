@@ -1850,6 +1850,43 @@
                 font-size: 16px !important;
                 padding: 14px !important;
             }
+
+            /* 7. הופך את הריבועים האפורים לקווי הפרדה דקים ונקיים (1px) */
+            body > div:first-of-type > section:last-child > div > div:empty,
+            .stat-divider {
+                width: 1px !important;
+                min-width: 1px !important;
+                max-width: 1px !important;
+                height: 44px !important;
+                background-color: #e2e8f0 !important;
+                flex-shrink: 0 !important;
+                align-self: center !important;
+                margin: 0 2px !important;
+            }
+
+            /* 8. מונע שבירת שורה מכוערת ב-"מיליארד ק״ג" ו-"1,700 +" */
+            body > div:first-of-type > section:last-child > div > div > div:first-child {
+                display: flex !important;
+                align-items: baseline !important;
+                justify-content: center !important;
+                flex-wrap: nowrap !important;
+                white-space: nowrap !important;
+                gap: 3px !important;
+            }
+
+            body > div:first-of-type > section:last-child span:first-child,
+            body > div:first-of-type > section:last-child span:nth-child(2) {
+                font-size: 1.05rem !important;
+                white-space: nowrap !important;
+            }
+
+            /* 9. מקטין את כפתור הטלפון הצף במובייל */
+            body > div:nth-last-of-type(2) {
+                width: 50px !important;
+                height: 50px !important;
+                bottom: 14px !important;
+                left: 14px !important;
+            }
         }
     </style>
 </head>
