@@ -1762,6 +1762,94 @@
                 gap: 16px !important;
                 padding: 32px 16px !important;
             }
+
+            /* =========================================================
+               CRITICAL MOBILE FIXES
+            ========================================================= */
+
+            /* 1. מניעת שבירה של אלמנטים מוסתרים (טאבים / המשך קריאה) */
+            [hidden] {
+                display: none !important;
+            }
+
+            /* 2. Header נקי - הסתרת אייקונים מיותרים */
+            .social-icons,
+            .contact-icons {
+                display: none !important;
+            }
+
+            /* 3. תיקון הוידאו ב-Hero שלא יגלוש מעבר לגובה הסקשן */
+            .above-the-fold-wrapper {
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .hero {
+                height: 460px !important;
+                min-height: 460px !important;
+                padding: 24px 16px !important;
+            }
+
+            .video-background iframe {
+                min-height: 100% !important;
+                height: 100% !important;
+                transform: translate(-50%, -50%) scale(1.6) !important;
+            }
+
+            /* 4. פס הספירה - ריווח מאוזן */
+            .stat-label {
+                max-width: 95px !important;
+                margin: 4px auto 0 auto !important;
+            }
+
+            /* 5. סקשן "איך זה עובד?" - פריסה אופקית קומפקטית */
+            .step-card {
+                display: grid !important;
+                grid-template-columns: 84px 1fr !important;
+                grid-template-rows: auto auto !important;
+                gap: 6px 14px !important;
+                align-items: center !important;
+                text-align: right !important;
+                background: #ffffff !important;
+                padding: 14px !important;
+                border-radius: 14px !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+
+            .step-card .step-image {
+                grid-row: 1 / 3 !important;
+                width: 84px !important;
+                height: 84px !important;
+                border-radius: 10px !important;
+                overflow: hidden !important;
+            }
+
+            .step-card .step-image img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+
+            .step-card .step-number {
+                width: 26px !important;
+                height: 26px !important;
+                font-size: 0.8rem !important;
+                margin: 0 !important;
+            }
+
+            .step-card .step-content p {
+                font-size: 0.88rem !important;
+                line-height: 1.45 !important;
+                margin: 0 !important;
+            }
+
+            /* 6. טופס צור קשר - שדות נוחים ללחיצה */
+            .form-input,
+            .form-submit {
+                width: 100% !important;
+                font-size: 16px !important;
+                padding: 14px !important;
+            }
         }
     </style>
 </head>
